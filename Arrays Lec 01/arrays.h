@@ -30,8 +30,7 @@ class Array
             for (int i = 0; i < initLength; i++){
                 newItems[i] = arr[i];
             }
-
-            free(arr);
+            delete [] arr;
             arr = newItems;
             initLength = initLength * 2;
         }
@@ -122,7 +121,7 @@ class Array
 
     void removeArr(){
         size = 0;
-        free(arr);
+        delete [] arr;
     }
 
 
