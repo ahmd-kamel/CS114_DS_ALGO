@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    // testing the class
     Array x(3);
 
     x.insert(5);
