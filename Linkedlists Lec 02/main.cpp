@@ -9,8 +9,13 @@ int main(){
     list.addLast(100);
     list.addLast(20);
     list.addLast(30);
-    list.print();
-    
+
+    int *arr = list.convertToArray();
+    int len = list.sizeList();
+
+    for (int i = 0; i < len; i++)
+        cout << arr[i] << endl;
+
     list.freeList();
 
     return 0;
