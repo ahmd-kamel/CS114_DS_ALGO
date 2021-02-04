@@ -9,12 +9,9 @@ int main(){
     list.addLast(100);
     list.addLast(20);
     list.addLast(30);
+    list.addLast(100);
 
-    int *arr = list.convertToArray();
-    int len = list.sizeList();
-
-    for (int i = 0; i < len; i++)
-        cout << arr[i] << endl;
+    cout << list.theKthNode(1) << endl;
 
     list.freeList();
 

@@ -35,6 +35,7 @@ class LinkedList{
     public:
 
     LinkedList(){
+        array = NULL;
         head = NULL;
         tale = NULL;
         size = 0;
@@ -119,6 +120,51 @@ class LinkedList{
         return array;
     }
 
+    void reverse(){
+        if (isEmpty())
+            return;
+
+        Node *current, *previous;
+        previous = head;
+        current = head->next;
+
+        while(current != NULL){
+            Node *follow = current->next;
+            current->next = previous;
+            previous = current;
+            current = follow;
+        }
+        tale = head;
+        tale->next = NULL;
+        head = previous;
+
+    }
+
+    int theKthNode(int k){
+
+        if (isEmpty())
+            throw invalid_argument("this is an empty array");
+        if (k > size)
+            throw invalid_argument("out of the list");
+        if (k <= 0)
+            throw invalid_argument("invalid node number");
+
+        Node *a, *b;
+        a = b = head;
+        for (int i = 0; i < k; i++)
+            b = b->next;
+        while (b != NULL){
+            a = a->next;
+            b = b->next;
+        }
+        return a->value;
+
+    }
+
+
+
+
+
     int sizeList(){
         return size;
     }
@@ -131,7 +177,8 @@ class LinkedList{
             delete ptn;
             ptn = head;
         }
-        delete []array;
+        if (array)
+            delete []array;
     }
 
 };
