@@ -1,21 +1,23 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
+typedef int listType;
+
 class LinkedList{
 
     private:
     // node
     class Node{
         public:
-        int value;
+        listType value;
         Node *next;
-        Node(int value){
+        Node(listType value){
             this->value = value;
             this->next = NULL;
         }
     };
     int size;
-    int *array;
+    listType *array;
     Node *head;
     Node *tale;
     // check if the list is empty
@@ -41,7 +43,7 @@ class LinkedList{
         size = 0;
     }
     // appending item
-    void addLast(int item){
+    void addLast(listType item){
         Node *node = new Node(item);
 
         if (isEmpty())
@@ -53,7 +55,7 @@ class LinkedList{
         size++;
     }
     // appending item in the first
-    void addFirst(int item){
+    void addFirst(listType item){
         Node *node = new Node(item);
         if (isEmpty())
             head = tale = node;
@@ -64,7 +66,7 @@ class LinkedList{
         size++;
     }
     // return the index of an item
-    int indexOf(int item){
+    int indexOf(listType item){
         int index = 0;
         for (Node *i = head; i; i = i->next){
             if (i->value == item)
@@ -74,7 +76,7 @@ class LinkedList{
         return -1;
     }
     // check if the list contains a certain item
-    bool contains(int item){
+    bool contains(listType item){
         return indexOf(item) != -1;
     }
     // print all items of the list
@@ -111,8 +113,8 @@ class LinkedList{
         size--;
     }
     // converte linked list to array
-    int * convertToArray(){
-        array = new int[size];
+    listType * convertToArray(){
+        array = new listType[size];
         int index = 0;
         for (Node *i = head; i; i = i->next){
             array[index++] = i->value;
@@ -141,7 +143,7 @@ class LinkedList{
 
     }
 
-    int theKthNode(int k){
+    listType theKthNode(int k){
 
         if (isEmpty())
             throw invalid_argument("this is an empty array");
