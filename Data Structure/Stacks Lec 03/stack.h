@@ -4,11 +4,14 @@
 // you have to define type of the stack elements in the main
         // typedef char stackType;
 
-// needs a check on the memory leaks
+// 1- needs a check on the memory leaks
+// 2- min functon to return the minumum of the stack values in O(1)
+
 class Stack{
     private:
         int size;
-        struct Node{
+        class Node{
+            public:
             stackType data;
             struct Node *last;
         };
@@ -39,9 +42,8 @@ class Stack{
         stackType pop(){
             if (empty())
                 throw invalid_argument("this is an empty stack");
-            Node *temp = new Node();
             stackType element = top->data;
-            temp = top;
+            Node *temp = top;
             top = top->last;
             temp->last = NULL;
             delete(temp);
@@ -76,7 +78,7 @@ class Stack{
             cout << endl;
         }
 
-        void destroyStack(){
+        ~Stack(){
             Node *temp = top;
             while (top != NULL){
                 top = top->last;
@@ -109,8 +111,7 @@ class Stack{
             if (size >= maxLength)
                 throw invalid_argument("this is a full stack");
             if (element != '\0'){
-                data[size] = element;
-                size++;
+                data[size++] = element;
             }
             else{
                 throw invalid_argument("invalid element");
