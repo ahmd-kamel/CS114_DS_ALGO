@@ -4,6 +4,7 @@
 // you have to define type of the stack elements in the main
         // typedef char stackType;
 
+// needs a check on the memory leaks
 class Stack{
     private:
         int size;
